@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; media-src 'self' blob: https://drive.google.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests">
   <title>Francis Montano — AI Video Editor</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -412,6 +412,118 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
     }
+
+    /* Editorial portfolio direction */
+    :root {
+      --navy: #f3eee6;
+      --slate: #e8e0d5;
+      --panel: #fbf8f3;
+      --border: rgba(24, 23, 20, 0.18);
+      --blue: #e4502f;
+      --cyan: #1f5147;
+      --gold: #c7a45b;
+      --text: #24221f;
+      --muted: #716b63;
+      --white: #24221f;
+      --font-display: 'Bricolage Grotesque', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    body { background: var(--navy); color: var(--text); font-family: var(--font-body); line-height: 1.55; }
+    .scrubber { display: none; }
+    nav {
+      top: 0; padding: 1.2rem clamp(1.25rem, 4vw, 4.5rem);
+      background: rgba(243,238,230,0.92); border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+    .nav-logo { color: var(--text); font-size: 1rem; letter-spacing: 0; }
+    .nav-logo span { color: var(--blue); }
+    nav ul { gap: clamp(1rem, 3vw, 2.4rem); }
+    nav ul a { color: var(--text); font-size: .76rem; text-transform: uppercase; letter-spacing: .08em; }
+    .nav-cta { background: var(--text); color: var(--navy) !important; border-radius: 0; padding: .55rem 1rem; }
+    .nav-cta:hover { background: var(--blue) !important; color: var(--navy) !important; }
+
+    .hero {
+      min-height: 92vh; justify-content: flex-start; padding: 9rem clamp(1.25rem, 8vw, 9rem) 5rem;
+      background: var(--navy); text-align: left;
+    }
+    .hero-bg {
+      background: radial-gradient(circle at 85% 45%, rgba(196,164,91,.22), transparent 28%), linear-gradient(135deg, #f3eee6 0%, #eee4d8 100%);
+    }
+    .hero-grid { display: none; }
+    .hero::after {
+      content: ''; position: absolute; z-index: 0; right: 7vw; bottom: 8%; width: min(34vw, 430px); aspect-ratio: 4 / 5;
+      background: url('images/portfolio-picture.webp') center / cover; filter: saturate(.8); box-shadow: 18px 18px 0 var(--cyan);
+    }
+    .hero-inner { z-index: 1; max-width: 710px; text-align: left; }
+    .hero-badge { margin-bottom: 1.4rem; padding: 0; border: 0; color: var(--cyan); font-size: .7rem; letter-spacing: .14em; border-radius: 0; }
+    .hero-badge::before { color: var(--blue); }
+    .hero h1 { max-width: 720px; font-size: clamp(3.4rem, 8vw, 7.8rem); line-height: .92; letter-spacing: -.075em; color: var(--text); margin-bottom: 2rem; }
+    .hero h1 .line-accent { color: var(--blue); display: inline; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; letter-spacing: -.06em; }
+    .hero-sub { max-width: 460px; margin: 0 0 2rem; color: var(--muted); font-size: 1rem; }
+    .hero-actions { justify-content: flex-start; }
+    .btn-primary, .form-submit { background: var(--text); color: var(--navy); border-radius: 0; padding: .85rem 1.5rem; }
+    .btn-primary:hover, .form-submit:hover { background: var(--blue); color: var(--navy); }
+    .btn-secondary { color: var(--text); border-color: var(--text); border-radius: 0; padding: .85rem 1.5rem; }
+    .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
+    .hero-stack { justify-content: flex-start; margin-top: 2.2rem; }
+    .stack-tag { background: transparent; border: 0; border-bottom: 1px solid var(--border); border-radius: 0; padding: .3rem 0; margin-right: .8rem; color: var(--muted); }
+
+    section { padding: clamp(4rem, 9vw, 8rem) clamp(1.25rem, 6vw, 7rem); scroll-margin-top: 80px; }
+    .section-inner { max-width: 1280px; }
+    .section-label { color: var(--blue); font-size: .68rem; letter-spacing: .16em; }
+    .section-title { color: var(--text); font-size: clamp(2.4rem, 5vw, 5rem); letter-spacing: -.06em; line-height: .95; }
+    .section-sub { color: var(--muted); max-width: 620px; }
+    #services, #about { background: var(--slate); }
+    #video-portfolio, #contact { background: var(--navy); }
+    .services-grid, .video-grid { gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .service-card, .video-card { background: var(--navy); border: 0; border-radius: 0; padding: clamp(1.25rem, 3vw, 2.5rem); }
+    .service-card:hover, .video-card:hover { border-color: transparent; transform: none; background: var(--panel); }
+    .service-icon { background: transparent; border: 1px solid var(--blue); border-radius: 50%; color: var(--blue); }
+    .service-card h3, .video-meta h3 { color: var(--text); }
+    .service-card p, .project-card p { color: var(--muted); }
+    .service-tag { border-radius: 0; color: var(--muted); }
+    .video-frame { border-radius: 0; background: #d7cec2; }
+    .video-card { padding: 0; overflow: hidden; }
+    .video-meta { padding: 1.2rem 1.5rem 1.5rem; }
+    .video-link { color: var(--blue); }
+    .video-group-label {
+      grid-column: 1 / -1;
+      padding: 2.5rem 1rem 1rem;
+      color: var(--cyan);
+      font-family: var(--font-body);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      background: var(--navy);
+    }
+    .video-group-label:first-child { padding-top: 1rem; }
+    .play-overlay { background: rgba(24,23,20,.2); }
+    .play-overlay .play-icon { background: var(--navy); border: 0; color: var(--text); }
+    .about-grid { grid-template-columns: minmax(180px, 300px) 1fr; gap: clamp(2rem, 7vw, 7rem); }
+    .about-photo img { border-radius: 0; border: 0; filter: grayscale(100%); }
+    .about-text p { color: var(--muted); }
+    .about-text p strong { color: var(--text); }
+    .about-stats { gap: 1px; background: var(--border); }
+    .stat-box { background: var(--slate); border: 0; border-radius: 0; }
+    .stat-num { color: var(--blue); }
+    .contact-wrap { max-width: 850px; text-align: left; }
+    .contact-wrap .section-sub { margin-left: 0; }
+    .contact-form { background: transparent; border: 0; border-top: 1px solid var(--border); border-radius: 0; padding: 2.5rem 0 0; }
+    input, textarea, select { background: transparent; border: 0; border-bottom: 1px solid var(--border); border-radius: 0; color: var(--text); padding-left: 0; }
+    input:focus, textarea:focus, select:focus { border-color: var(--blue); }
+    label { color: var(--muted); }
+    footer { background: var(--text); border: 0; color: var(--navy); }
+    footer a { color: var(--gold); }
+
+    @media (max-width: 800px) {
+      .hero { min-height: auto; padding-top: 8rem; }
+      .hero::after { position: relative; right: auto; bottom: auto; width: min(70vw, 300px); margin: 4rem 0 0 auto; display: block; }
+      .hero-inner { max-width: 100%; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { max-width: 260px; }
+    }
   </style>
 </head>
 <body>
@@ -516,9 +628,11 @@
 <section id="video-portfolio">
   <div class="section-inner">
     <p class="section-label">02:00:00:00 — Video Portfolio</p>
-    <h2 class="section-title">Recent Edits</h2>
+    <h2 class="section-title">Video Edit Compilation</h2>
     <p class="section-sub">AI-assisted ad creative and short-form edits for DTC and e-commerce brands. Open each clip directly from the portfolio.</p>
     <div class="video-grid">
+
+      <div class="video-group-label">Product &amp; Direct-Response Ads</div>
 
       <div class="video-card">
         <div class="video-frame">
@@ -563,7 +677,7 @@
           </a>
         </div>
         <div class="video-meta">
-          <h3>Eddikeskyl/h3>
+          <h3>Eddikeskyl</h3>
           <a href="https://drive.google.com/file/d/1c7r5FCQ74fAbSOOqK8MAH-g16NCszgMw/view?usp=drive_link" target="_blank" rel="noopener" class="video-link">View on Google Drive ↗</a>
         </div>
       </div>
@@ -596,9 +710,11 @@
         </div>
         <div class="video-meta">
           <h3>Brez</h3>
-          <a href="https://drive.google.com/file/d/18awOesJOyGM8z9n65Pf2IQBzyQJq2fGb/view?usp=sharing" target="_blank" rel="noopener" class="video-link">View on Google Drive ↗</a>
+          <a href="https://drive.google.com/file/d/18awOesJOyGM8z9n65Pf2IQBzyQJq2fGb/view?usp=sharing" target="_blank" rel="noopener" class="video-link">Watch on Google Drive ↗</a>
         </div>
       </div>
+
+      <div class="video-group-label">AI, Avatar &amp; Short-Form Creative</div>
 
       <div class="video-card">
         <div class="video-frame">
@@ -716,24 +832,6 @@
         <div style="margin-top:2rem;">
           <a href="#contact" class="btn-primary">Work With Me</a>
         </div>
-      </div>
-    </div>
-    <div class="about-stats">
-      <div class="stat-box">
-        <span class="stat-num">2+</span>
-        <span class="stat-label">Years Remote Experience</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-num">9+</span>
-        <span class="stat-label">Video Projects Delivered</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-num">US</span>
-        <span class="stat-label">Business Hours Available</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-num">3</span>
-        <span class="stat-label">Core Video Service Areas</span>
       </div>
     </div>
   </div>
